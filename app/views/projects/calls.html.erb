@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Proyecto <%= @project.name %></h1>
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <% @projects.each do |project| %>
+      <li> <h3> <%= link_to project.name, calls_project_path(project) %></h3></li>
+      <% end %>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-5">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Información de Contacto</h3>
+    </div>
+    <div class="panel-body">
+
+    	<table class="table table-borderless" style="text-align: center">
+        <tr>
+          <td> Nombre </td>
+          <td> Teléfono </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+            <td> <%= @respondent.name %> </td>
+            <td> <%= @respondent.phone %> </td>
+            <td>
+              <button onclick="callCustomer('<%= @respondent.phone %>')" type="button" class="btn btn-success call-customer-button">Llamar</button>
+              <button class="btn btn-danger hangup-button" disabled onclick="hangUp()">Finalizar llamada</button>
+            </td>
+        </tr>
+        </table>
+          <div class="col-md-5">
+                <%= form_for (:state), url: {action: "state"}, method: :post do |s| %>
+                <%= s.hidden_field(:id)%>
+                <div class="radio">
+                  <%= s.radio_button(:state, 0) %>
+                  <%= label_tag(:state, "No hubo conexión") %>
+                </div>
+                <div class="radio">
+                  <%= s.radio_button(:state, 1) %>
+                  <%= label_tag(:state, "Completado") %>
+                </div>
+                <div class="radio">
+                  <%= s.radio_button(:state, 2) %>
+                  <%= label_tag(:state, "No volver a llamar") %>
+                </div>
+                <div class="radio">
+                  <%= s.radio_button(:state, 3) %>
+                  <%= label_tag(:state, "Comentario") %>
+                </div>
+                <div class="field">
+                  <%= s.text_area(:note, size: "30x4") %>
+                </div>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-warning">Enviar</button>
+            <% end %>
+          </div>
+
+    </div>
+    <div class="panel-footer"><div id="call-status">Conectado con Twilio...</div></div>
+  </div>
+</div>
+
+            <div class="col-md-5">
+                <div style="border-radius: 5px!important; overflow: hidden;">
+                    <iframe height="500px" width="100%" frameBorder="0" src="<%= @project.url%>" name="iframe_a"></iframe>
+                </div>
+            </div>
+
+</div>

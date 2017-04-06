@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= @respondent.phone %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @respondent.name %>
+</p>
+
+<% @respondent.projects.each do |project| %>
+          <%= project.name %> -
+<% end %>
+
+<%= link_to 'Editar', edit_respondent_path(@respondent) %> |
+<%= link_to 'Mostrar', respondents_path %>

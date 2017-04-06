@@ -1,0 +1,118 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Proyecto <small><%= @project.name %></small></h1>
+
+<div class="row">
+  <div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Información</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        <strong>Nombre:</strong>
+        <%= @project.name %>
+      </p>
+
+      <p>
+        <strong>Compañia:</strong>
+        <%= @project.company %>
+      </p>
+
+      <p>
+        <strong>Fecha de inicio:</strong>
+        <%= @project.start %>
+      </p>
+
+      <p>
+        <strong>Fecha de termino:</strong>
+        <%= @project.finish %>
+      </p>
+
+      <p>
+        <strong>Need:</strong>
+        <%= @project.need %>
+      </p>
+
+      <p>
+        <strong>Url:</strong>
+        <%= @project.url %>
+      </p>
+
+      <%= link_to 'Editar', edit_project_path(@project) %> |
+      <%= link_to 'Atrás', projects_path %>
+    </div>
+  </div>
+
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Usuarios</h3>
+    </div>
+    <div class="panel-body">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @project.users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Encuestados</h3>
+    </div>
+    <div class="panel-body">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Teléfono</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @project.respondents.each do |respondent| %>
+            <tr>
+              <td><%= respondent.phone %></td>
+              <td><%= respondent.name %></td>
+              <td>
+                <% respondent.states.each do |st| %>
+                  <%= estado(st.state) %>,
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+
+
+    </div>
+  </div>
+</div>

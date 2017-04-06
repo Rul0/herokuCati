@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Encuestados</h1>
+<%= link_to 'Nuevo Encuestado', new_respondent_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Teléfono</th>
+      <th>Nombre</th>
+      <th>Proyectos</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @respondents.each do |respondent| %>
+      <tr>
+        <td><%= respondent.phone %></td>
+        <td><%= respondent.name %></td>
+        <td><% respondent.projects.each do |project| %>
+          <%= project.name %>,
+        <% end %>
+        </td>
+        <td>
+          <% respondent.states.each do |st| %>
+            <%= estado(st.state) %>,
+        <% end %>
+        </td>
+        <td><%= link_to 'Mostrar', respondent %></td>
+        <td><%= link_to 'Editar', edit_respondent_path(respondent) %></td>
+        <td><%= link_to 'Eliminar', respondent, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Callcenter</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Callcenter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user.nil? %>
+              <li> <%= link_to new_user_session_path, class: 'login-button' do %> Iniciar Sesión<% end %> </li>
+            <% else %>
+              <% if current_user.supervisor_role? %>
+
+                <li><%= link_to "Encuestados ", respondents_path %></li>
+              <% end %>
+              <li><%= link_to "Proyectos", projects_path %></li>
+              <li><%= link_to('Perfil', edit_user_registration_path) %></li>
+              <li><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <% unless flash.empty? %>
+       <script type="text/javascript">
+            <% flash.each do |f| %>
+  	      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+  	     	 toastr['<%= type %>']('<%= f[1] %>');
+  	   <% end %>
+       </script>
+       <% end %>
+
+
+    <%= yield %>
+    </div>
+  </div>
+</div>
+    <%= javascript_include_tag "//static.twilio.com/libs/twiliojs/1.2/twilio.min.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>
