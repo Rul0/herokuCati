@@ -23,7 +23,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: postgresql-slippery-95659
+  database: dd4sgv7eir8hso
   pool: 5
-  username:
-  password:
+  username: owychurhjeagfy
+  password: 2f4bfa39a1f0b6ccfbcab350b749a70876c2521f60315cff1a64130ed891eb1e
