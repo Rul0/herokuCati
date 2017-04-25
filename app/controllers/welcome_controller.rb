@@ -15,11 +15,11 @@ class WelcomeController < ApplicationController
       if current_user.supervisor_role?
         redirect_to projects_path
       else
-        redirect_to projects_path
+        #redirect_to projects_path
         #if current_user.projects.first.nil?
         #  redirect_to edit_user_password_path
         #else
-        #redirect_to calls_project_path(current_user.projects.first)
+        redirect_to calls_project_path(current_user.projects.first)
         #end
       end
     end
