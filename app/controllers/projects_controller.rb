@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    redirect_user
+    #redirect_user
     @projects = Project.all
 
   end
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    redirect_user
+    #redirect_user
     @users = User.all
   end
 
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    redirect_user
+    #redirect_user
     @project = Project.new
     @users = User.all
   end
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    redirect_user
+    #redirect_user
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    redirect_user
+    #redirect_user
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Proyecto actualizado.' }

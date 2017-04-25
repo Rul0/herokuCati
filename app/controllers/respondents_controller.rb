@@ -18,7 +18,7 @@ class RespondentsController < ApplicationController
     redirect_user
     Respondent.import(params[:file],params[:project_id])
 
-    redirect_to root_url, notice: "Importado correctamente!"
+    redirect_to root_path, notice: "Importado correctamente!"
   end
   # GET /respondents/new
   def new
