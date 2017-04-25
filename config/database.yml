@@ -27,5 +27,3 @@ production:
   pool: 5
   username: owychurhjeagfy
   password: 2f4bfa39a1f0b6ccfbcab350b749a70876c2521f60315cff1a64130ed891eb1e
-  port: 5432
-  host: ec2-54-163-254-76.compute-1.amazonaws.com
