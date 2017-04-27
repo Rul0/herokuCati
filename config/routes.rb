@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'token/generate' => 'token#generate'
-  post 'call/connect' => 'call#connect'
+  get 'call/connect' => 'call#connect'
 
 end
