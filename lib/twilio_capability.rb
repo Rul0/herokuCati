@@ -8,7 +8,7 @@ class TwilioCapability
 
     application_sid = 'APce212735865d965476ce81814e103b72'
     capability.allow_client_outgoing application_sid
-    
+
     capability.generate
   end
 end
