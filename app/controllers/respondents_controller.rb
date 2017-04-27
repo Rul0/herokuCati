@@ -4,39 +4,39 @@ class RespondentsController < ApplicationController
   # GET /respondents
   # GET /respondents.json
   def index
-    #redirect_user
+    redirect_user
     @respondents = Respondent.all
   end
 
   # GET /respondents/1
   # GET /respondents/1.json
   def show
-    #redirect_user
+    redirect_user
   end
   # Csv to DB
   def import
-    #redirect_user
+    redirect_user
     Respondent.import(params[:file],params[:project_id])
 
     redirect_to root_path, notice: "Importado correctamente!"
   end
   # GET /respondents/new
   def new
-    #redirect_user
+    redirect_user
     @respondent = Respondent.new
     @projects = Project.all
   end
 
   # GET /respondents/1/edit
   def edit
-    #redirect_user
+    redirect_user
     @projects = Project.all
   end
 
   # POST /respondents
   # POST /respondents.json
   def create
-    #redirect_user
+    redirect_user
     @respondent = Respondent.new(respondent_params)
 
     respond_to do |format|
@@ -53,7 +53,7 @@ class RespondentsController < ApplicationController
   # PATCH/PUT /respondents/1
   # PATCH/PUT /respondents/1.json
   def update
-    #redirect_user
+    redirect_user
     respond_to do |format|
       if @respondent.update(respondent_params)
         format.html { redirect_to @respondent, notice: 'Encuestado actualizado.' }
@@ -68,7 +68,7 @@ class RespondentsController < ApplicationController
   # DELETE /respondents/1
   # DELETE /respondents/1.json
   def destroy
-    #redirect_user
+    redirect_user
     @respondent.destroy
     respond_to do |format|
       format.html { redirect_to respondents_url, notice: 'Encuestado eliminado' }
